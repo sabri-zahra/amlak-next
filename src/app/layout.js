@@ -1,7 +1,10 @@
-import { Inter } from "next/font/google";
+import Layout from "@/components/layout/Layout";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import localFont from "next/font/local";
+import NextProvider from "@/provider/NextProvider";
+const alefba = localFont({
+  src: "../../public/fonts/Far_Casablanca Heavy.ttf",
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -10,8 +13,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="fa">
+      <body className={alefba.className}>
+        <NextProvider>
+          <Layout>{children}</Layout>
+        </NextProvider>
+      </body>
     </html>
   );
 }
